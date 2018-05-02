@@ -1,0 +1,25 @@
+{
+  "development": {
+    "username": "fortNiteTracker",
+    "password": "T3sting!",
+    "database": "fortNiteTracker",
+    "host": "127.0.0.1",
+    "port": 5432,
+    "dialect": "postgres"
+  },
+  "test": {
+    "username": "fortNiteTracker",
+    "password": "T3sting!",
+    "database": "fortNiteTracker",
+    "host": "127.0.0.1",
+    "port": 5432,
+    "dialect": "postgres"
+  },
+  "production": {
+    "username": "root",
+    "password": null,
+    "database": "database_production",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  }
+}
