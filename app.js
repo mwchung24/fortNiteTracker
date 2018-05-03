@@ -5,6 +5,7 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const bodyParser = require('body-parser');
 const pg = require('pg');
+const fortNite = require('fortnite-api');
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
@@ -12,31 +13,46 @@ const usersRouter = require('./routes/users');
 // Set up the express app
 const app = express();
 
-// Create connection to the PostgreSQL database
-const connect = "postgres://fortNiteTracker:T3sting!@localhost:5432/fortNiteTracker";
-
-app.get('/', function(req, res) {
-  pg.connect(connect, function(err, client, done) {
-    if(err) {
-      return console.error('error fetching client from pool', err);
-    }
-    client.query('SELECT * FROM users', function(err, result) {
-      if(err) {
-        return console.error('error running query', err);
-      }
-      console.log({users: result.rows});
-      res.render('index', {users: result.rows});
-      done();
-    });
-  });
-});
-
 // Logs requests to the console
 app.use(logger('dev'));
 
 // Parse incoming requests data (https://github.com/expressjs/body-parser)
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
+
+// Require routes for the application
+require('./server/routes')(app);
+
+app.get('*', (req, res) => res.status(200).send({
+  message: 'Welcome to the beginning of nothingness.',
+}));
+
+// Create connection to the PostgreSQL database
+// const connection = "postgres://fortNiteTracker:T3sting!@localhost:5432/fortNiteTracker";
+// app.get('/', function(req, res) {
+//   pg.connect(connection, function(err, client, done) {
+//     if(err) {
+//       return console.error('error fetching client from pool', err);
+//     }
+//     client.query('SELECT * FROM Users', function(err, result) {
+//       console.log(err);
+//       console.log(result);
+//       if(err) {
+//         return console.error('error running query', err);
+//       }
+//       res.render('index', {users: result.rows});
+//       done();
+//     });
+//   });
+// });
+
+// let forniteAPI = new fortnite(
+//   [
+//     "mwchung24@gmail.com",
+//     "Hanna072709",
+//
+//   ]
+// );
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
