@@ -6,4 +6,5 @@ module.exports = (app) => {
   }));
 
   app.post('/api/players', playersController.create);
+  app.get('/api/players', playersController.list);
 };

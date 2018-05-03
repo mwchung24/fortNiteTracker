@@ -23,6 +23,9 @@ app.use(bodyParser.urlencoded({extended: false}));
 // Require routes for the application
 require('./server/routes')(app);
 
+app.use('/', indexRouter);
+// app.use('/users', usersRouter);
+
 app.get('*', (req, res) => res.status(200).send({
   message: 'Welcome to the beginning of nothingness.',
 }));
@@ -56,16 +59,13 @@ app.get('*', (req, res) => res.status(200).send({
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'pug');
+app.set('view engine', 'hbs');
 
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-
-// app.use('/', indexRouter);
-// app.use('/users', usersRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
