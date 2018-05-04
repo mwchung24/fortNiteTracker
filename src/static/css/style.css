@@ -1,3 +1,11 @@
-#main {
-  font-size: 100px;
+/* Landing page */
+
+.form {
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+}
+
+.usernameInput, .platformInput, .landingSubmit {
+  margin-top: 10px;
 }

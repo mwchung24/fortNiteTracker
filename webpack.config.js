@@ -2,17 +2,18 @@ const webpack = require('webpack');
 const path = require('path');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 module.exports = {
+  mode: 'development',
   entry: path.join(__dirname, 'src', 'app-client.jsx'),
   output: {
-    path: path.join(__dirname, 'src', 'static', 'js'),
+    path: path.resolve(__dirname, 'src', 'static', 'js'),
     filename: 'bundle.js'
   },
   module: {
     rules: [{
       test: path.join(__dirname, 'src'),
+      exclude: /(node_modules|bower_components)/,
       loader: 'babel-loader',
       options: {
-        cacheDirectory: 'babel_cache',
         presets: ['react', 'es2015']
       }
     }]
@@ -31,7 +32,11 @@ module.exports = {
       }
     })
   ],
+  watchOptions: {
+    ignored: /node_modules/
+  },
   resolve: {
     extensions: ['.js', '.jsx', '*']
   },
+  devtool: 'source-maps',
 };
