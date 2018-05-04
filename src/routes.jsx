@@ -1,11 +1,13 @@
 import React from 'react';
-import { Route, IndexRoute } from 'react-router';
+import { Route } from 'react-router-dom';
 import pageNotFound from './components/pageNotFound';
+import landingPage from './components/landingPage';
 
-const routes = (
-  // <Route>
+const Routes = (
+  <div>
+    <Route path="/" component={landingPage}></Route>
     <Route path="*" component={pageNotFound}></Route>
-  // </Route>
+  </div>
 );
 
-export default routes;
+export default Routes;

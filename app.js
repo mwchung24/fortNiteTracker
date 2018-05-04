@@ -5,10 +5,10 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const bodyParser = require('body-parser');
 const pg = require('pg');
-const fortNite = require('fortnite-api');
+// const fortNite = require('fortnite-api');
 
 const indexRouter = require('./routes/index');
-const usersRouter = require('./routes/users');
+// const usersRouter = require('./routes/users');
 
 // Set up the express app
 const app = express();
@@ -23,49 +23,21 @@ app.use(bodyParser.urlencoded({extended: false}));
 // Require routes for the application
 require('./server/routes')(app);
 
-app.use('/', indexRouter);
+// app.use('/', indexRouter);
 // app.use('/users', usersRouter);
-
-app.get('*', (req, res) => res.status(200).send({
-  message: 'Welcome to the beginning of nothingness.',
-}));
-
-// Create connection to the PostgreSQL database
-// const connection = "postgres://fortNiteTracker:T3sting!@localhost:5432/fortNiteTracker";
-// app.get('/', function(req, res) {
-//   pg.connect(connection, function(err, client, done) {
-//     if(err) {
-//       return console.error('error fetching client from pool', err);
-//     }
-//     client.query('SELECT * FROM Users', function(err, result) {
-//       console.log(err);
-//       console.log(result);
-//       if(err) {
-//         return console.error('error running query', err);
-//       }
-//       res.render('index', {users: result.rows});
-//       done();
-//     });
-//   });
-// });
-
-// let forniteAPI = new fortnite(
-//   [
-//     "mwchung24@gmail.com",
-//     "Hanna072709",
-//
-//   ]
-// );
-
-// view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'pub');
 
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'src')));
+
+// app.get('*', (req, res) => res.render('index'));
+app.use('*', indexRouter);
+
+// view engine setup
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'ejs');
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
