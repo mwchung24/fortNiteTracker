@@ -5,6 +5,7 @@
   "private": true,
   "scripts": {
     "start:dev": "nodemon ./bin/www",
+    "start": "node ./bin/www",
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "webpack --mode development",
     "build": "webpack --mode production"
