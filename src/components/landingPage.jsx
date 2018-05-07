@@ -1,6 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+import Header from './header';
+import UserStats from './userStats';
+
 export default class LandingPage extends React.Component {
   constructor(props) {
     super(props);
@@ -10,6 +13,7 @@ export default class LandingPage extends React.Component {
       platform: '',
       usernameError: '',
       platformError: '',
+      userStats: {},
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -56,7 +60,7 @@ export default class LandingPage extends React.Component {
           platform: platform,
         }
       }).then((result) => {
-        console.log(result);
+        this.setState({userStats: result});
       });
     }
   }
@@ -74,18 +78,34 @@ export default class LandingPage extends React.Component {
 
     return (
       <section>
-        <form onSubmit={this.handleSubmit} className="form">
-          <div>{usernameError}</div>
-          <input placeholder="Epic Username" onChange={this.handleChange} className="usernameInput"></input>
-          <div>{platformError}</div>
-          <select defaultValue="Select Platform" onChange={this.handleChangeDropDown} className="platformInput">
-            <option disabled="true">Select Platform</option>
-            <option>Computer</option>
-            <option>Xbox Live</option>
-            <option>PlayStation Network</option>
-          </select>
-          <button onClick={this.handleSubmit} className="landingSubmit">Submit</button>
-        </form>
+        <Header/>
+        <div className="fortniteBody">
+          <div className="explanation">
+            This stat tracker is for recreational use only.  I have made
+            an application that communicates with the FORTNITE API to
+            retrieve user stats.  You must enter the EPIC username and the
+            platform to receive accurate data.
+          </div>
+          <form onSubmit={this.handleSubmit} className="form">
+            <div className="form1">
+              <div className="error">{usernameError}</div>
+              <input placeholder="Epic Username" onChange={this.handleChange} className="usernameInput"></input>
+            </div>
+            <div className="form2">
+              <div className="error">{platformError}</div>
+              <select defaultValue="Select Platform" onChange={this.handleChangeDropDown} className="platformInput">
+                <option disabled="true">Select Platform</option>
+                <option>Computer</option>
+                <option>Xbox Live</option>
+                <option>PlayStation Network</option>
+              </select>
+            </div>
+            <button onClick={this.handleSubmit} className="landingSubmit">Submit</button>
+          </form>
+          <UserStats
+            userStats = {this.state.userStats}
+          />
+        </div>
       </section>
     );
   }
