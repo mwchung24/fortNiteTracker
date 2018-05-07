@@ -5,10 +5,9 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const bodyParser = require('body-parser');
 const pg = require('pg');
-// const fortNite = require('fortnite-api');
+const favicon = require('serve-favicon');
 
 const indexRouter = require('./routes/index');
-// const usersRouter = require('./routes/users');
 
 // Set up the express app
 const app = express();
@@ -23,9 +22,6 @@ app.use(bodyParser.urlencoded({extended: false}));
 // Require routes for the application
 require('./server/routes')(app);
 
-// app.use('/', indexRouter);
-// app.use('/users', usersRouter);
-
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -34,6 +30,9 @@ app.use(express.static(path.join(__dirname, 'src')));
 
 // app.get('*', (req, res) => res.render('index'));
 app.use('*', indexRouter);
+
+// favicon
+app.use(favicon(path.join(__dirname, 'src', 'favicon.ico')));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
