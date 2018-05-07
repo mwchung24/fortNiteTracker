@@ -86,6 +86,7 @@ export default class LandingPage extends React.Component {
             retrieve user stats.  You must enter the EPIC username and the
             platform to receive accurate data.
           </div>
+          <img className="fortnitePicture" src="static/images/fortnitepic.jpg"></img>
           <form onSubmit={this.handleSubmit} className="form">
             <div className="form1">
               <div className="error">{usernameError}</div>

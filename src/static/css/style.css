@@ -12,7 +12,7 @@ body {
   display: flex;
   flex-direction: column;
   color: white;
-  font-family: sans-serif;
+  font-family: 'Luckiest Guy', cursive;
   margin-right: 20px;
 }
 
@@ -22,9 +22,15 @@ body {
   padding: 20px 100px;
 }
 
+.fortnitePicture {
+  width: 100%;
+  height: auto;
+  margin-bottom: 30px;
+}
+
 .explanation {
   color: white;
-  font-family: sans-serif;
+  font-family: 'Luckiest Guy', cursive;
   margin-bottom: 20px;
   background-color: #3A5E86;
   border: 0.5px solid black;
@@ -41,18 +47,19 @@ button, .platformInput {
 }
 
 .usernameInput {
-  font-size: 18px;
   border-radius: 3px;
   padding-left: 5px;
 }
 
-.platformInput {
+.platformInput, .usernameInput {
   font-size: 18px;
+  font-family: 'Luckiest Guy', cursive;
 }
 
 button {
   font-size: 18px;
   border-radius: 5px;
+  font-family: 'Luckiest Guy', cursive;
 }
 
 /* Header */
@@ -61,7 +68,8 @@ button {
   display: flex;
   align-items: center;
   color: white;
-  font-family: sans-serif;
+  font-family: 'Luckiest Guy', cursive;
+  font-size: 20px;
   width: 100%;
   height: 100%;
 }
@@ -69,4 +77,47 @@ button {
 .fortniteLogo {
   height: auto;
   width: 150px;
+}
+
+/* Stat Body */
+.statBody {
+  margin-top: 30px;
+  border: 0.5px solid black;
+  border-radius: 5px;
+  font-family: 'Luckiest Guy', cursive;
+  background-color: #BED6E7;
+  padding: 20px;
+}
+
+.currentSeason, .allTime, .lifetime {
+  margin-top: 20px;
+}
+
+.statsHeader {
+  color: black;
+}
+
+.subhead {
+  color: black;
+  margin-bottom: 10px;
+  text-decoration: underline;
+}
+
+.currentSeasonHead, .allTimeHead, .lifetimeHead{
+  margin-bottom: 10px;
+}
+
+.currentSeasonBody, .allTimeBody {
+  display: flex;
+  justify-content: space-around;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+}
+
+.value {
+  color: #2A29E5;
+  padding-left: 10px;
 }
