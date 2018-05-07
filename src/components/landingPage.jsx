@@ -49,12 +49,14 @@ export default class LandingPage extends React.Component {
       }
 
       $.ajax({
-        method: 'GET',
+        method: 'POST',
         url: '/playerStats',
         data: {
           username: this.state.username,
           platform: platform,
         }
+      }).then((result) => {
+        console.log(result);
       });
     }
   }

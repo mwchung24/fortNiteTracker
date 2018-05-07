@@ -8,7 +8,18 @@ module.exports = (app) => {
 
   app.post('/api/players', playersController.create);
   app.get('/api/players', playersController.list);
-  app.get('/playerStats', (req, res) => {
-    console.log(req.body);
+  app.post('/playerStats', (req, res) => {
+    let username = req.body.username;
+    let platform = req.body.platform;
+
+    // Bring in the Fortnite module
+    const Client = require('fortnite');
+    // Create an instance of the client with your API Key
+    const fortnite = new Client('5748dae0-3485-4775-9286-fa0682ff04ce');
+
+    // Get stats of a player
+    fortnite.user(username, platform).then((response) => {
+      res.send(response);
+    });
   });
 };
