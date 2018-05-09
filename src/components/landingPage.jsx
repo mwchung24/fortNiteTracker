@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 
 import Header from './header';
 import UserStats from './userStats';
+import Youtube from './youtube';
 
 export default class LandingPage extends React.Component {
   constructor(props) {
@@ -14,6 +15,7 @@ export default class LandingPage extends React.Component {
       usernameError: '',
       platformError: '',
       userStats: {},
+      clicked: false,
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -60,7 +62,7 @@ export default class LandingPage extends React.Component {
           platform: platform,
         }
       }).then((result) => {
-        this.setState({userStats: result});
+        this.setState({userStats: result, clicked: true});
       });
     }
   }
@@ -85,17 +87,23 @@ export default class LandingPage extends React.Component {
             an application that communicates with the FORTNITE API to
             retrieve user stats.  You must enter the EPIC username and the
             platform to receive accurate data.
+            <br/>
+            <br/>
+            Using the YouTube API, I will provide some videos of popular
+            FORTNITE streamers.
           </div>
           <img className="fortnitePicture" src="static/images/fortnitepic.jpg"></img>
           <form onSubmit={this.handleSubmit} className="form">
             <div className="form1">
               <div className="error">{usernameError}</div>
-              <input placeholder="Epic Username" onChange={this.handleChange} className="usernameInput"></input>
+              <div>EPIC Username</div>
+              <input placeholder="ie: Ninja" onChange={this.handleChange} className="usernameInput"></input>
             </div>
             <div className="form2">
               <div className="error">{platformError}</div>
-              <select defaultValue="Select Platform" onChange={this.handleChangeDropDown} className="platformInput">
-                <option disabled="true">Select Platform</option>
+              <div>Select Plaform</div>
+              <select defaultValue="ie: Computer" onChange={this.handleChangeDropDown} className="platformInput">
+                <option disabled="true">ie: Computer</option>
                 <option>Computer</option>
                 <option>Xbox Live</option>
                 <option>PlayStation Network</option>
@@ -105,6 +113,10 @@ export default class LandingPage extends React.Component {
           </form>
           <UserStats
             userStats = {this.state.userStats}
+          />
+          <Youtube
+            username = {this.state.username}
+            clicked = {this.state.clicked}
           />
         </div>
       </section>

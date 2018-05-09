@@ -23,6 +23,8 @@
     "ejs": "^2.5.9",
     "express": "~4.16.0",
     "fortnite": "^4.1.1",
+    "google-auth-library": "^1.4.0",
+    "googleapis": "^30.0.0",
     "http-errors": "~1.6.2",
     "http-server": "^0.11.1",
     "https": "^1.0.0",
