@@ -8,7 +8,7 @@ import React from 'react';
 
 const apiKey = 'AIzaSyCewOm0o-G3D3mYnbJ5WClVdZLcUGt6AIU';
 const channelId = 'UCXgGY0wkgOzynnHvSEVmE3A';
-const result = 3;
+const result = 6;
 
 let finalURL = '';
 
@@ -21,13 +21,25 @@ class Youtube extends React.Component {
     };
 
     this.handleClick = this.handleClick.bind(this);
+    this.getYouTubeHandle = this.getYouTubeHandle.bind(this);
+  }
+
+  getYouTubeHandle(username) {
+    if(username === 'ninja') {
+      return 'ninjashyper';
+    } else if(username === 'summitoneg') {
+      return 'summit1g';
+    } else if(username === 'tsm_myth') {
+      return 'myth';
+    }
+    else return username;
   }
 
   handleClick() {
     if(this.props.username) {
       let username = this.props.username;
-      // let username = 'ninjashyper';
-      let getChannelId = `https://www.googleapis.com/youtube/v3/channels?key=${apiKey}&forUsername=${username}&part=id`;
+      let ytHandle = this.getYouTubeHandle(username);
+      let getChannelId = `https://www.googleapis.com/youtube/v3/channels?key=${apiKey}&forUsername=${ytHandle}&part=id`;
       console.log(getChannelId);
       fetch(getChannelId)
         .then((response) => response.json())
@@ -61,9 +73,11 @@ class Youtube extends React.Component {
         return <iframe width="560" height="315" key={i} src={link} frameBorder="0" allow="autoplay; encrypted-media" allowFullScreen></iframe>;
         });
         return (
-          <div>
-            <button onClick={this.handleClick}>Get YouTube Videos</button>
-            {videos}
+          <div className="youtubeBody">
+            <button className="getClipsButton" onClick={this.handleClick}>Get YouTube Videos</button>
+            <div className="youtubeClips">
+              {videos}
+            </div>
           </div>
         );
     } else {

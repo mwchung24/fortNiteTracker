@@ -121,3 +121,24 @@ button {
   color: #2A29E5;
   padding-left: 10px;
 }
+
+/* Youtube Body */
+.youtubeBody {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.getClipsButton {
+  margin: 20px;
+}
+
+.youtubeClips {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+iframe {
+  margin-bottom: 20px;
+}
