@@ -1,6 +1,6 @@
 # FORTNITE Stat Tracker
 
-[FORTNITE][heroku]
+[FORTNITE Stat Tracker][heroku]
 
 [heroku]: https://fort-nite-stat-tracker.herokuapp.com/
 
