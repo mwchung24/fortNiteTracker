@@ -1,13 +1,6 @@
 import React from 'react';
 
-// youtube api key
-// key=API_KEY
-// apikey: AIzaSyCewOm0o-G3D3mYnbJ5WClVdZLcUGt6AIU
-// clientID: 585329906733-eg2v0pdkn33r1obend6h1dabqdmvfga1.apps.googleusercontent.com
-// secret key: 5zkIr3-rB347DMjML3Q0lrEA
-
 const apiKey = 'AIzaSyCewOm0o-G3D3mYnbJ5WClVdZLcUGt6AIU';
-const channelId = 'UCXgGY0wkgOzynnHvSEVmE3A';
 const result = 6;
 
 let finalURL = '';
@@ -40,7 +33,6 @@ class Youtube extends React.Component {
       let username = this.props.username;
       let ytHandle = this.getYouTubeHandle(username);
       let getChannelId = `https://www.googleapis.com/youtube/v3/channels?key=${apiKey}&forUsername=${ytHandle}&part=id`;
-      console.log(getChannelId);
       fetch(getChannelId)
         .then((response) => response.json())
         .then((responseJSON) => {
